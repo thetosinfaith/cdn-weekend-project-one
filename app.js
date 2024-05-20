@@ -1,7 +1,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Mukta:wght@200;300;400;500;600;700;800&family=Outfit:wght@500&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"></link>
 
-function StyledBox(props) {
-  const boxStyle = {
+function CustomBox(props) {
+  const customBoxStyle = {
     height: "250px",
     width: "220px",
     borderRadius: "5px",
@@ -13,14 +13,14 @@ function StyledBox(props) {
   };
 
   return (
-    <div style={boxStyle}>
+    <div style={customBoxStyle}>
       {props.children}
     </div>
   );
 }
 
-function NestedStyledBox(props) {
-  const nestedBoxStyle = {
+function InnerBox(props) {
+  const innerBoxStyle = {
     borderRadius: "5px",
     height: "100px",
     width: "220px",
@@ -39,14 +39,14 @@ function NestedStyledBox(props) {
   };
 
   return (
-    <div style={nestedBoxStyle}>
-      <h1>{props.line1}</h1>
+    <div style={innerBoxStyle}>
+      <h1>{props.text}</h1>
     </div>
   );
 }
 
-function MyApp() {
-  const mainContainer = {
+function App() {
+  const mainWrapperStyle = {
     height: "100vh",
     width: "100%",
     display: "flex",
@@ -55,7 +55,7 @@ function MyApp() {
     flexDirection: "row",
   };
 
-  const containerStyle = {
+  const flexContainerStyle = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -63,43 +63,43 @@ function MyApp() {
     padding: "5px",
   };
 
-  const container1 = {
-    ...containerStyle,
+  const styledContainerStyle = {
+    ...flexContainerStyle,
     background: "linear-gradient(to left, #970045, #970045, #970045)",
     color: 'white',
   };
 
   return (
-    <div style={mainContainer}>
-      <div style={container1}>
-        <StyledBox>
-          <NestedStyledBox 
-            line1="The Many Media Mutations of Teenage Mutant Ninja Turtles"
+    <div style={mainWrapperStyle}>
+      <div style={styledContainerStyle}>
+        <CustomBox>
+          <InnerBox 
+            text="The Many Media Mutations of Teenage Mutant Ninja Turtles"
           />
-        </StyledBox>
-        <StyledBox>
-          <NestedStyledBox 
-            line1="A Day in the Life of TMNT's Foot Clan"
+        </CustomBox>
+        <CustomBox>
+          <InnerBox 
+            text="A Day in the Life of TMNT's Foot Clan"
           />
-        </StyledBox>
-        <StyledBox>
-          <NestedStyledBox 
-            line1="Saw X Filmmakers on Going Old School With an Untold Chapter for Jigsaw"
+        </CustomBox>
+        <CustomBox>
+          <InnerBox 
+            text="Saw X Filmmakers on Going Old School With an Untold Chapter for Jigsaw"
           />
-        </StyledBox>
-        <StyledBox>
-          <NestedStyledBox 
-            line1="Honest Game Trailers | Final Fantasy XVI"
+        </CustomBox>
+        <CustomBox>
+          <InnerBox 
+            text="Honest Game Trailers | Final Fantasy XVI"
           />
-        </StyledBox>
-        <StyledBox>
-          <NestedStyledBox 
-            line1="Captain America Sings! How Disney Made Rogers: The Musical a Reality"
+        </CustomBox>
+        <CustomBox>
+          <InnerBox 
+            text="Captain America Sings! How Disney Made Rogers: The Musical a Reality"
           />
-        </StyledBox>
+        </CustomBox>
       </div>
     </div>
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<MyApp />);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
